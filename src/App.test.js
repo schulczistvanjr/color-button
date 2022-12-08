@@ -8,7 +8,10 @@ test("button has correct initial text and color", () => {
     name: `Change to ${replaceCamelCaseWithSpaces("MidnightBlue")}`,
   });
 
-  expect(button).toHaveStyle({ backgroundColor: "MediumVioletRed" });
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MediumVioletRed",
+  });
   expect(button).toHaveTextContent(
     `Change to ${replaceCamelCaseWithSpaces("MidnightBlue")}`
   );
@@ -21,7 +24,10 @@ test("button turns blue when clicked", () => {
   });
 
   fireEvent.click(button);
-  expect(button).toHaveStyle({ backgroundColor: "MidnightBlue" });
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MidnightBlue",
+  });
   expect(button).toHaveTextContent(
     `Change to ${replaceCamelCaseWithSpaces("MediumVioletRed")}`
   );
@@ -33,7 +39,10 @@ test("button are enabled, checkbox is unchecked, after checkbox is checked the b
     name: `Change to ${replaceCamelCaseWithSpaces("MidnightBlue")}`,
   });
   expect(button).toBeEnabled();
-  expect(button).toHaveStyle({ backgroundColor: "MediumVioletRed" });
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MediumVioletRed",
+  });
 
   const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
   expect(checkbox).not.toBeChecked();
@@ -41,27 +50,36 @@ test("button are enabled, checkbox is unchecked, after checkbox is checked the b
   fireEvent.click(checkbox);
   expect(checkbox).toBeChecked();
   expect(button).toBeDisabled();
-  expect(button).toHaveStyle({ backgroundColor: "gray" });
+  expect(button).toHaveStyle({ color: "white", backgroundColor: "gray" });
 
   fireEvent.click(checkbox);
   expect(checkbox).not.toBeChecked();
-  expect(button).not.toBeDisabled();
-  expect(button).toHaveStyle({ backgroundColor: "MediumVioletRed" });
+  expect(button).toBeEnabled();
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MediumVioletRed",
+  });
 
   fireEvent.click(button);
-  expect(button).toHaveStyle({ backgroundColor: "MidnightBlue" });
-  expect(button).not.toBeDisabled();
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MidnightBlue",
+  });
+  expect(button).toBeEnabled();
   expect(checkbox).not.toBeChecked();
 
   fireEvent.click(checkbox);
   expect(checkbox).toBeChecked();
   expect(button).toBeDisabled();
-  expect(button).toHaveStyle({ backgroundColor: "gray" });
+  expect(button).toHaveStyle({ color: "white", backgroundColor: "gray" });
 
   fireEvent.click(checkbox);
   expect(checkbox).not.toBeChecked();
-  expect(button).not.toBeDisabled();
-  expect(button).toHaveStyle({ backgroundColor: "MidnightBlue" });
+  expect(button).toBeEnabled();
+  expect(button).toHaveStyle({
+    color: "white",
+    backgroundColor: "MidnightBlue",
+  });
 });
 
 describe("spaces before camel-case capital letters", () => {
